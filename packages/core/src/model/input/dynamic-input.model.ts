@@ -26,7 +26,9 @@ export interface DynamicInputModelConfig extends DynamicInputControlModelConfig<
 
     accept?: string;
     inputType?: string;
+    dataType?: string;
     list?: string[];
+    objectArray?: [{}];
     mask?: string | RegExp | (string | RegExp)[];
     max?: number | string | Date;
     min?: number | string | Date;
@@ -39,8 +41,10 @@ export class DynamicInputModel extends DynamicInputControlModel<string | number 
 
     @serializable() accept: string | null;
     @serializable() inputType: string;
+    @serializable() dataType: string;    
     files: FileList | null = null;
     @serializable() list: string[] | null;
+    @serializable() objectArray: [{}] | null;
     @serializable() mask: string | RegExp | (string | RegExp)[] | null;
     @serializable() max: number | string | Date | null;
     @serializable() min: number | string | Date | null;
@@ -58,7 +62,9 @@ export class DynamicInputModel extends DynamicInputControlModel<string | number 
 
         this.accept = config.accept || null;
         this.inputType = config.inputType || DYNAMIC_FORM_CONTROL_INPUT_TYPE_TEXT;
+        this.dataType = config.dataType || null;        
         this.list = Array.isArray(config.list) ? config.list : null;
+        this.objectArray = Array.isArray(config.objectArray) ? config.objectArray : null;
         this.mask = config.mask || null;
         this.max = config.max !== undefined ? config.max : null;
         this.min = config.min !== undefined ? config.min : null;

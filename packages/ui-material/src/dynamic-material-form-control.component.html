@@ -122,7 +122,7 @@
                        [dynamicId]="bindId && model.id"
                        [formControlName]="model.id"
                        [maxlength]="model.maxLength"
-                       [matAutocomplete]="model.name"
+                       [matAutocomplete]="auto"
                        [minlength]="model.minLength"
                        [name]="model.name"
                        [ngClass]="model.cls.element.control"
@@ -148,11 +148,14 @@
 
             </mat-form-field>
 
-            <!-- <mat-autocomplete #matAutocomplete="matAutocomplete" (optionSelected)="onValueChange($event)">
-
-                <mat-option *ngFor="let option of model.list" [value]="option">{{ option }}</mat-option>
-
-            </mat-autocomplete> -->
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onValueChange($event)">
+                    <ng-container *ngIf="model.dataType==='list'">
+                            <mat-option *ngFor="let option of model.list" [value]="option">{{ option }}</mat-option>                            
+                    </ng-container>
+                    <ng-container *ngIf="model.dataType==='objectArray'">
+                            <mat-option *ngFor="let option of model.objectArray" [value]="option.value">{{ option.label }}</mat-option>                                                
+                    </ng-container>
+                </mat-autocomplete>
 
         </ng-container>
 
