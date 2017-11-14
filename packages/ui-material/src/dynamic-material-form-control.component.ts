@@ -49,7 +49,7 @@ export type MatFormControlComponent = MatAutocomplete | MatCheckbox | MatDatepic
     MatRadioGroup | MatSelect | MatSlider | MatSlideToggle;
 
 @Component({
-    selector: "dynamic-material-form-control,dynamic-form-material-control",
+    selector: "dynamic-material-form-control",
     templateUrl: "./dynamic-material-form-control.component.html"
 })
 export class DynamicMaterialFormControlComponent extends DynamicFormControlComponent implements OnChanges {
